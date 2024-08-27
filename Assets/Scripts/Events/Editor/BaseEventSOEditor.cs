@@ -11,7 +11,7 @@ public class BaseEventSOEditor<T> : Editor
     {
         if (BaseEventSO == null)
         {
-            BaseEventSO = target as BaseEventSO<T>;
+            BaseEventSO = target as BaseEventSO<T>;// TODO：搞懂target这些特殊方法属性
         }
     }
 
@@ -32,9 +32,9 @@ public class BaseEventSOEditor<T> : Editor
         List<MonoBehaviour> listeners = new List<MonoBehaviour>();
 
         if(BaseEventSO == null || BaseEventSO.OnEventRaised == null)
-            return listeners;
+            return listeners; // 防止未运行时一直报空
 
-        var subscribers = BaseEventSO.OnEventRaised.GetInvocationList();
+        var subscribers = BaseEventSO.OnEventRaised.GetInvocationList(); // 获取所有订阅者
         foreach (var subscriber in subscribers)
         {
             var obj = subscriber.Target as MonoBehaviour;
