@@ -227,7 +227,7 @@ public class MapGenerater : MonoBehaviour
     }
 
     /// <summary>
-    /// 保存地图
+    /// 保存地图 防止返回后重新生成
     /// </summary>
     private void SaveMap()
     {

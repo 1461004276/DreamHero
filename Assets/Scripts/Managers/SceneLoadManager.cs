@@ -43,7 +43,7 @@ public class SceneLoadManager : MonoBehaviour
         // 卸载场景
         await UnloadSceneTask();
         // 加载房间
-        await LoadSceneTask();
+        await LoadSceneTask(); // 用await启动异步操作
 
         afterRoomLoadedEvent.RaiseEvent(currentRoom, this);
     }
@@ -52,12 +52,12 @@ public class SceneLoadManager : MonoBehaviour
     /// 异步操作加载场景
     /// </summary>
     /// <returns></returns>
-    private async Awaitable LoadSceneTask()
+    private async Awaitable LoadSceneTask() // awaitable 是 2023新的特性
     {
         var s = currentScene.LoadSceneAsync(LoadSceneMode.Additive);
         await s.Task;
 
-        if (s.Status == AsyncOperationStatus.Succeeded)
+        if (s.Status == AsyncOperationStatus.Succeeded) // 如果异步加载成功
         {
             fadePanel.FadeOut(0.4f);
             SceneManager.SetActiveScene(s.Result.Scene);
