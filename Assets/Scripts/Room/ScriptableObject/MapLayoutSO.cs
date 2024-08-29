@@ -8,7 +8,7 @@ public class MapLayoutSO : ScriptableObject {
 }
 
 [System.Serializable]
-public class MapRoomData
+public class MapRoomData // 存储地图房间数据
 {
     public float posX, posY;
     public int column, row;
@@ -18,7 +18,7 @@ public class MapRoomData
 }
 
 [System.Serializable]
-public class LinePosition
+public class LinePosition // 存储地图房间连接线数据
 {
     public SerializeVector3 startPos, endPos;
 }

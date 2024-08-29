@@ -15,18 +15,18 @@ public enum RoomType
     Boss = 32
 }
 
-public enum RoomState
+public enum RoomState // 房间状态
 {
-    Locked,
-    Visited,
-    Attainable
+    Locked,// 上锁
+    Visited,// 已访问
+    Attainable// 可以访问
 }
 
-public enum CardType
+public enum CardType //卡牌类型
 {
-    Attack,
-    Defense,
-    Abilities
+    Attack,//攻击
+    Defense,//防御
+    Abilities//能力
 }
 
 public enum EffectTargetType

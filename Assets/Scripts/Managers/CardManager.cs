@@ -22,7 +22,7 @@ public class CardManager : MonoBehaviour
         // 依据需求初始化卡牌库
         foreach (var item in newGameCardLibrary.cardLibraryList)
         {
-            currentCardLibrary.cardLibraryList.Add(item);
+            currentCardLibrary.cardLibraryList.Add(item); //根据初始卡牌库初始当前卡牌库
         }
     }
 

@@ -40,7 +40,7 @@ public class MapGenerater : MonoBehaviour
     {
         if (mapLayout.mapRoomDataList.Count > 0)
         {
-            LoadMap();
+            LoadMap(); // 加载地图 条件是已经创建好地图
         }
         else
         {
@@ -92,7 +92,7 @@ public class MapGenerater : MonoBehaviour
                 // 生成房间
                 var room = Instantiate(roomPrefab, newPosition, Quaternion.identity, transform);// 实例化预制体
                 RoomType newType = GetRandomRoomType(mapConfig.roomBlueprints[column].roomType);// 获取随机房间类型
-
+                // 设置房间状态
                 if (column == 0)
                 {
                     room.roomState = RoomState.Attainable;
@@ -132,7 +132,7 @@ public class MapGenerater : MonoBehaviour
         // 遍历第一列房间 去连线
         foreach (var room in column1)
         {
-            var targetRoom = ConnectToRandomRoom(room, column2, false);
+            var targetRoom = ConnectToRandomRoom(room, column2, false); // 正向链接
             connectedColumn2Rooms.Add(targetRoom);
         }
 
@@ -143,7 +143,7 @@ public class MapGenerater : MonoBehaviour
             if (!connectedColumn2Rooms.Contains(room))
             {
                 // 连接它
-                ConnectToRandomRoom(room, column1, true);
+                ConnectToRandomRoom(room, column1, true); // 反向链接
             }
         }
     }
@@ -154,17 +154,17 @@ public class MapGenerater : MonoBehaviour
     /// <param name="room">起点房间</param>
     /// <param name="column2">目标列房间</param>
     /// <returns>连接到的房间</returns>
-    private Room ConnectToRandomRoom(Room room, List<Room> column2, bool check)
+    private Room ConnectToRandomRoom(Room room, List<Room> column2, bool check) // 因为调用两次进行连线
     {
         Room targetRoom;
 
         targetRoom = column2[Random.Range(0, column2.Count)];
 
-        if (check)
+        if (check)// 反向链接 true 目标房间链接room
         {
             targetRoom.linkTo.Add(new Vector2Int(room.column, room.row));
         }
-        else
+        else // 正向链接 false room链接目标房间 
         {
             room.linkTo.Add(new Vector2Int(targetRoom.column, targetRoom.row));
         }
@@ -231,6 +231,7 @@ public class MapGenerater : MonoBehaviour
     /// </summary>
     private void SaveMap()
     {
+        // 利用SO序列化存储
         mapLayout.mapRoomDataList = new List<MapRoomData>();
 
         // 添加已经生成的房间

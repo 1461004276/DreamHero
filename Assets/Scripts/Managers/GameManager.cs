@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Header("地图布局")]
-    public MapLayoutSO mapLayout;
+    public MapLayoutSO mapLayout; // 游戏地图数据 传入方便修改
 
     public List<EnemyBase> aliveEnemyList = new List<EnemyBase>();
 
@@ -28,11 +28,12 @@ public class GameManager : MonoBehaviour
 
         // 设置当前房间以及同列房间的状态
         currentRoom.roomState = RoomState.Visited;
+        // 寻找同列房间并上锁
         var sameColumnRooms = mapLayout.mapRoomDataList.FindAll(r => r.column == currentRoom.column);
 
         foreach (var room in sameColumnRooms)
         {
-            if (room.row != roomVector.y)
+            if (room.row != roomVector.y) // 除了当前房间，其他房间都上锁
             {
                 room.roomState = RoomState.Locked;
             }

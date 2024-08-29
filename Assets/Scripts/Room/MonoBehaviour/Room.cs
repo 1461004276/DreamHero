@@ -9,7 +9,7 @@ public class Room : MonoBehaviour
 
     public int row;//行
     public int column;//列
-    public List<Vector2Int> linkTo = new List<Vector2Int>();
+    public List<Vector2Int> linkTo = new List<Vector2Int>(); // 连接的房间
 
     [Header("广播")]
     public ObjectEventSO loadRoomEvent; // 每次点击房间时触发 加载场景
@@ -22,7 +22,7 @@ public class Room : MonoBehaviour
     private void OnMouseDown()
     {
         // Debug.Log("点击房间: " + roomData.roomType);
-        if (roomState == RoomState.Attainable)
+        if (roomState == RoomState.Attainable) // 只有确定可以进入状态时才触发
             loadRoomEvent.RaiseEvent(this, this);
     }
 

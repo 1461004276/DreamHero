@@ -7,9 +7,9 @@ public class CardDeck : MonoBehaviour
 {
     public CardManager cardManager;
     public CardLayoutManager layoutManager;
-    public Vector3 deckPosition;
+    public Vector3 deckPosition; // 发牌起始位置
     [Header("抽卡动画事件")]
-    public float duration;
+    public float duration;//抽牌动画时长
 
     [SerializeField]
     private List<CardDataSO> drawDeck = new List<CardDataSO>();     // 抽牌堆
@@ -107,7 +107,7 @@ public class CardDeck : MonoBehaviour
 
             // 卡牌能量判断
             currentCard.UpdateCardState();
-
+            // 卡牌动画
             currentCard.isAnimating = true;
             currentCard.transform.DOScale(Vector3.one, duration * 0.5f).SetDelay(delay).onComplete = () =>
             {
@@ -117,7 +117,7 @@ public class CardDeck : MonoBehaviour
             };
 
             // 设置卡牌排序
-            currentCard.GetComponent<SortingGroup>().sortingOrder = i;
+            currentCard.GetComponent<SortingGroup>().sortingOrder = i; // 防止卡牌重叠 或者错序
             currentCard.UpdatePositionRotation(cardTransform.pos, cardTransform.rotation);
         }
     }

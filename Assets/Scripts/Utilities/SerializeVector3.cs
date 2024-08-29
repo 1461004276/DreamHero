@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// 处理Vector3的序列化
 [System.Serializable]
 public class SerializeVector3
 {

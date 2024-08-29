@@ -11,7 +11,7 @@ public class SceneLoadManager : MonoBehaviour
     public AssetReference menu;                  // 主菜单
     public AssetReference intro;                  // 开场动画
 
-    private Vector2Int currentRoomVector;
+    private Vector2Int currentRoomVector; // 当前房间
     private Room currentRoom;
 
     [Header("广播事件")]
@@ -45,7 +45,7 @@ public class SceneLoadManager : MonoBehaviour
         // 加载房间
         await LoadSceneTask(); // 用await启动异步操作
 
-        afterRoomLoadedEvent.RaiseEvent(currentRoom, this);
+        afterRoomLoadedEvent.RaiseEvent(currentRoom, this); // 发出广播事件 通知GameManager更新房间数据
     }
 
     /// <summary>

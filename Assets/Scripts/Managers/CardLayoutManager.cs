@@ -8,17 +8,17 @@ public class CardLayoutManager : MonoBehaviour
     public float maxWidth = 7f;
     public float cardSpacing = 2f;
     [Header("弧形参数")]
-    public float angleBetweenCards = 7f;
-    public float radius = 17f;
-    public Vector3 centerPoint;
+    public float angleBetweenCards = 7f; // 间隔弧度
+    public float radius = 17f; // 圆弧所属园的半径
+    public Vector3 centerPoint; // 手牌中心点
 
     [SerializeField]
-    private List<Vector3> cardPosition = new List<Vector3>();
-    private List<quaternion> cardRotation = new List<quaternion>();
+    private List<Vector3> cardPosition = new List<Vector3>(); // 卡牌位置
+    private List<quaternion> cardRotation = new List<quaternion>(); // 卡牌角度
 
     private void Awake()
     {
-        centerPoint = isHorizontal ? Vector3.up * -4.5f : Vector3.up * -21.5f;
+        centerPoint = isHorizontal ? Vector3.up * -4.5f : Vector3.up * -21.5f;//根据是否横向排列计算中心点
     }
 
     public CardTransform GetCardTransforms(int index, int totalCards)
@@ -38,13 +38,13 @@ public class CardLayoutManager : MonoBehaviour
         cardPosition.Clear();
         cardRotation.Clear();
 
-        // 纵向排列
+        // 横向排列 水平排列
         if (isHorizontal)
         {
             float currentWidth = cardSpacing * (numberOfCards - 1);
             float totalWidth = Mathf.Min(currentWidth, maxWidth);
 
-            float currentSpacing = totalWidth > 0 ? totalWidth / (numberOfCards - 1) : 0;
+            float currentSpacing = totalWidth > 0 ? totalWidth / (numberOfCards - 1) : 0; // 如果我抽到一张卡以上就是前面的值 否则为0处于中间
 
             for (int i = 0; i < numberOfCards; i++)
             {

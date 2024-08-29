@@ -7,10 +7,10 @@ using UnityEngine.Rendering;
 public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("组件")]
-    public SpriteRenderer cardSprite;
-    public TextMeshPro nameText, costText, descriptionText, typeText;
+    public SpriteRenderer cardSprite; // 拖拽是引擎查找速度最快的方式
+    public TextMeshPro nameText, costText, descriptionText, typeText; // 文字
 
-    public CardDataSO cardData;
+    public CardDataSO cardData; //卡牌数据
 
     [Header("原始数据")]
     public Vector3 originalPosition;
