@@ -3,7 +3,7 @@ using UnityEngine;
 public class CharacterBase : MonoBehaviour
 {
     [SerializeField] private int maxHp;
-    public IntVariable hp;
+    public IntVariable hp; //血量
     public IntVariable defense;
     public IntVariable buffRound;
     public int CurrentHp
@@ -13,7 +13,7 @@ public class CharacterBase : MonoBehaviour
     }
     public int MaxHp { get => hp.maxValue; }
 
-    protected Animator animator;
+    protected Animator animator; //动画组件
 
     public bool isDead;
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class CardEffect : ScriptableObject
 {
-    public int value;
+    public int value;// 卡牌效果数值
     public EffectTargetType targetType;
 
     /// <summary>

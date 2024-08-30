@@ -28,10 +28,10 @@ public enum CardType //卡牌类型
     Defense,//防御
     Abilities//能力
 }
-
+// 卡牌效果目标类型
 public enum EffectTargetType
 {
-    Self,
-    Target,
-    All
+    Self,//自身
+    Target,//目标
+    All//全体
 }

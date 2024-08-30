@@ -3,8 +3,8 @@ using UnityEngine.EventSystems;
 
 public class CardDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public GameObject arrowPrefab;
-    private GameObject currentArrow;
+    public GameObject arrowPrefab; // 攻击线段的预制体
+    private GameObject currentArrow; // 当前攻击线段
     private Card currentCard;
     private bool canMove;           // 能否移动
     private bool canExecute;        // 能否执行效果
@@ -87,6 +87,7 @@ public class CardDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         if (currentArrow != null)
         {
+            // 销毁攻击线段
             Destroy(currentArrow);
         }
         if (canExecute)

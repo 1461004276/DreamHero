@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DamageEffect", menuName = "Card Effect/DamageEffect")]
 public class DamageEffect : CardEffect
 {
+    //伤害效果
     public override void Execute(CharacterBase from, CharacterBase target)
     {
         if (target == null) return;

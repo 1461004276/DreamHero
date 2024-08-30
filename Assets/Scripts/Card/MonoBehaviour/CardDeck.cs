@@ -108,17 +108,17 @@ public class CardDeck : MonoBehaviour
             // 卡牌能量判断
             currentCard.UpdateCardState();
             // 卡牌动画
-            currentCard.isAnimating = true;
+            currentCard.isAnimating = true;// 正在动画
             currentCard.transform.DOScale(Vector3.one, duration * 0.5f).SetDelay(delay).onComplete = () =>
             {
                 currentCard.transform.DOMove(cardTransform.pos, duration)
-                .onComplete = () => currentCard.isAnimating = false;
+                .onComplete = () => currentCard.isAnimating = false; // 完成动画
                 currentCard.transform.DORotateQuaternion(cardTransform.rotation, duration);
             };
 
             // 设置卡牌排序
             currentCard.GetComponent<SortingGroup>().sortingOrder = i; // 防止卡牌重叠 或者错序
-            currentCard.UpdatePositionRotation(cardTransform.pos, cardTransform.rotation);
+            currentCard.UpdatePositionRotation(cardTransform.pos, cardTransform.rotation); // 更新卡牌原始位置和旋转
         }
     }
 

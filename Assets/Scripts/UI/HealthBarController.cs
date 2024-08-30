@@ -7,8 +7,8 @@ public class HealthBarController : MonoBehaviour
     private CharacterBase currentCharacter;
     [Header("Element")]
     public Transform healthBarTransform;
-    private UIDocument healthBarDocument;
-    private ProgressBar healthBar;
+    private UIDocument healthBarDocument; //UI面板的css
+    private ProgressBar healthBar;// UI面板上的血条子物体
 
     // 防御相关
     private VisualElement defenseElement;

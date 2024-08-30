@@ -24,7 +24,7 @@ public class Player : CharacterBase
     {
         CurrentMana = maxMana;
     }
-
+    // 更新能量 被 CardCost Event 监听
     public void UpdateMana(int cost)
     {
         CurrentMana -= cost;

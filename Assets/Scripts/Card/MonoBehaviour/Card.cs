@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 
-public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler // 继承鼠标滑入、滑出事件
 {
     [Header("组件")]
     public SpriteRenderer cardSprite; // 拖拽是引擎查找速度最快的方式
@@ -12,7 +12,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public CardDataSO cardData; //卡牌数据
 
-    [Header("原始数据")]
+    [Header("原始数据")] // 原始数据 鼠标未滑入
     public Vector3 originalPosition;
     public Quaternion originalRotation;
     public int originalLayerOrder;
@@ -62,7 +62,10 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         originalRotation = rotation;
         originalLayerOrder = GetComponent<SortingGroup>().sortingOrder;
     }
-
+    /// <summary>
+    /// 鼠标滑入
+    /// </summary>
+    /// <param name="eventData"></param>
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isAnimating) return;
