@@ -5,7 +5,7 @@ public class CharacterBase : MonoBehaviour
     [SerializeField] private int maxHp;
     public IntVariable hp; //血量
     public IntVariable defense;
-    public IntVariable buffRound;
+    public IntVariable buffRound; // buff回合数
     public int CurrentHp
     {
         get => hp.currentValue;
@@ -19,8 +19,8 @@ public class CharacterBase : MonoBehaviour
 
     public VFXController VFX;
 
-    public float baseStrength = 1f;
-    private float strengthEffect = 0.5f;
+    public float baseStrength = 1f; // 基础力量
+    private float strengthEffect = 0.5f; // 力量效果
 
     [Header("广播事件")]
     public ObjectEventSO characterDeadEvent;
@@ -36,7 +36,7 @@ public class CharacterBase : MonoBehaviour
         CurrentHp = MaxHp;
 
         ResetDefense();
-        buffRound.SetValue(0);
+        buffRound.SetValue(0); // buff回合数置零
     }
 
     /// <summary>
@@ -134,7 +134,7 @@ public class CharacterBase : MonoBehaviour
     {
         if (buffRound.currentValue < 1)
             return;
-        buffRound.SetValue(buffRound.currentValue - 1);
+        buffRound.SetValue(buffRound.currentValue - 1); // buff持续回合减1
     }
 
 }

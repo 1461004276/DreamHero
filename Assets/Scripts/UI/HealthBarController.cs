@@ -102,7 +102,7 @@ public class HealthBarController : MonoBehaviour
             healthBar.title = $"{currentCharacter.CurrentHp}/{currentCharacter.MaxHp}";
             healthBar.value = currentCharacter.CurrentHp;
             healthBar.highValue = currentCharacter.MaxHp;
-
+            // 血条UI的三种状态
             healthBar.RemoveFromClassList("highHealth");
             healthBar.RemoveFromClassList("mediumHealth");
             healthBar.RemoveFromClassList("lowHealth");
